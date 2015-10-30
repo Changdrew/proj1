@@ -1,0 +1,9 @@
+<h1> New Pokemon </h1>
+
+<%= simple_form_for @pokemon, :url => pokemon_index_path do |f| %>
+
+    <%= f.input :name %>
+    <%= f.button :submit %>
+
+    <% end %>
+    <p><%= link_to "<< Main Portal", root_path %></p>

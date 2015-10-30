@@ -1,3 +1,32 @@
 <h3>Trainer</h3>
+<h4>Details</h4>
 <p>Name: <%= @trainer.name if @trainer.name %></p>
 <p>Email: <%= @trainer.email if @trainer.email %></p>
+
+<h4>Pokemons</h4>
+
+<table>
+    <tr>
+        <td style="width: 100px"><b>ID</b></td>
+        <td style="width: 100px"><b>Name</b></td>
+        <td style="width: 100px"><b>Level</b></td>
+        <td style="width: 100px"><b>Health</b></td>
+        <td style="width: 100px"><b>Attack</b></td>
+    </tr>
+
+    <% @trainer.pokemons.each do |p| %>
+    <tr>
+        <td><%= p.id.to_s %></td>
+        <td><%= p.name %></td>
+        <td><%= p.level.to_s %></td>
+        <td><%= p.health.to_s %></td>
+        <td><%= button_to "Damage Pokemon!", damage_path(id: p), :class => "button tiny", :method => :patch %><td>
+    </tr>
+    <% end %>
+</table>
+
+<% if @trainer == current_trainer %>
+<%= button_to "Create new Pokemon!", new_pokemon_path, :class => "button small", :method => :get %>
+<% end %>
+
+<p><%= link_to "<< Main Portal", root_path %></p>
